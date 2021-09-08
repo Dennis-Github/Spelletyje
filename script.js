@@ -1,19 +1,25 @@
-var x, y;
+let x = 320;
+let y = 180;
+let xspeed = 5;
+let yspeed = 12;
+
+let r = 25;
 
 function setup() {
-	createCanvas(500, 400);
-
-  x = 0;
-  y = 200;
+  createCanvas(640, 360);
 }
 
 function draw() {
-	background(225);
-  
-  ellipse(x,y,50,50);
-  x = x + 5;
-
-  if(x > 500){
-    x = 0;
+  background(225);
+  ellipse(x, y, r*2, r*2);
+  x += xspeed;
+  y += yspeed;
+  if (x > width - r || x < r) {
+    xspeed = -xspeed;
   }
+  if (y > height - r || y < r) {
+    yspeed = -yspeed;
+  }
+
+
 }
