@@ -1,8 +1,8 @@
 
 class Ball {
-  constructor(x, y, vy) {
-    this.x = x;
-    this.y = y;
+  constructor(vy) {
+    this.x = random(width);
+    this.y = -20;
     this.vy = vy;
   }
 
@@ -21,18 +21,14 @@ var balls = [];
 
 function setup() {
   createCanvas(400, 400);
-
-  ball = new Ball(10, -20, 2);
-  ball1 = new Ball(200, -80, 3);
-  ball2 = new Ball(300, -60, 1);
-  balls.push(ball);
-  balls.push(ball1);
-  balls.push(ball2);
-
 }
 
 function draw() {
   background(220);
+
+  if(frameCount % 80 == 0){
+    balls.push(new Ball(random(10)));   
+  }
 
   balls.forEach((b) => {
     b.drawBall();
