@@ -14,8 +14,10 @@ class Ball {
     if (this.y < -100 || this.y > 400) {
       this.y = 400;
     }
+
   }
 }
+
 
 var balls = [];
 
@@ -25,9 +27,11 @@ function setup() {
 
 function draw() {
   background(220);
+  rect(mouseX - 70,350,140,30)
 
-  if(frameCount % 80 == 0){
-    balls.push(new Ball(random(10)));   
+
+  if (frameCount % 80 == 0) {
+    balls.push(new Ball(random(6)));
   }
 
   balls.forEach((b) => {
