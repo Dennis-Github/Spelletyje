@@ -39,6 +39,11 @@ class Ball {
 
 
 var balls = [];
+var song = [];
+
+function preload() {
+  song = loadSound("Rainbow.mp3");    
+}
 
 function setup() {
   createCanvas(400, 400);
@@ -48,16 +53,26 @@ function draw() {
   background(220);
   fill("orange")
   rect(mouseX - 70, 350, 140, 30)
-  text("Score: " + score, 10, 20);
+  text("Score: " + score, 10, 20); 
 
 
   if (frameCount % 80 == 0) {
     balls.push(new Ball(random(6)));
-  }
+  }  
 
   balls.forEach((b) => {
     b.drawBall();
     b.checkCollision();
-
-  })
+  });    
 }
+
+function keyPressed() {
+  console.log("keyCode", keyCode)
+  if(keyCode == 32){
+    song.play();
+  }
+  else{
+    song.stop();
+  }
+}
+  
