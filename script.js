@@ -31,7 +31,11 @@ class Ball {
     if (this.y > 399) {
       let idx = balls.indexOf(this);
       balls.splice(idx, 1);
-    }
+      gameState = "end";
+      balls = []
+      score = 0;
+    } 
+      
 
   }
 }
@@ -66,7 +70,7 @@ function draw() {
   }  
  
   if (gameState === 'end') {
-    text('game over, press down arrow to end', width / 2, height / 2);
+    text('game over, press space to start over', width / 2, height / 2);
   }    
 }
 
@@ -82,7 +86,7 @@ function game(){
 
   balls.forEach((b) => {
     b.drawBall();
-    b.checkCollision();
+    b.checkCollision();      
   });
 }
 
@@ -94,6 +98,6 @@ function keyPressed() {
     
   if(keyCode == 32){
     gameState = "play"
-    //song.play();
+    song.play();
   }
 }
