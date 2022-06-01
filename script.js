@@ -44,20 +44,26 @@ var score = 0;
 var balls = [];
 var song = [];
 var gameState = 'start';
+var spr;
+var anim;
 
 function preload() {
-  song = loadSound("Rainbow.mp3");    
+  song = loadSound("Rainbow.mp3");  
+  anim = loadAnimation("sprite.png");
 }
 
 
 
 function setup() {
   createCanvas(400, 400); 
+  spr = createSprite(width/2, height/2);
+  spr.addAnimation("default", anim);
 }
 
 function draw() {
   background(220);
   fill("orange")   
+  drawSprites();
   
   if (gameState === 'start') {
     fill('purple');
@@ -97,7 +103,11 @@ function keyPressed() {
   }
     
   if(keyCode == 32){
-    gameState = "play"
+    gameState = "play";
     song.play();
   }
-}
+    
+  }
+
+
+
