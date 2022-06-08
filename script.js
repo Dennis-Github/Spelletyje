@@ -9,7 +9,7 @@ class Ball {
 
   drawBall() {
     fill(this.c);
-    rect(this.x, this.y, 20, 20);
+    image(img1,this.x, this.y, 40, 40);
 
     this.y = this.y + this.vy;
 
@@ -44,26 +44,27 @@ var score = 0;
 var balls = [];
 var song = [];
 var gameState = 'start';
-var spr;
-var anim;
+var img;
 
 function preload() {
-  song = loadSound("Rainbow.mp3");  
-  anim = loadAnimation("sprite.png");
+  img1 = loadImage('sprite.png');
+  img = loadImage('Sprite.jpg')
+  //song = loadSound("Rainbow.mp3");
+
 }
+
 
 
 
 function setup() {
-  createCanvas(400, 400); 
-  spr = createSprite(width/2, height/2);
-  spr.addAnimation("default", anim);
+  createCanvas(400, 400);
+  //image(img,0,0)
 }
 
 function draw() {
-  background(220);
-  fill("orange")   
-  drawSprites();
+  background(img,220);
+  fill("orange");
+
   
   if (gameState === 'start') {
     fill('purple');
@@ -99,12 +100,12 @@ function game(){
 function keyPressed() {  
   if (keyCode === 40){
     gameState = 'end';
-    song.stop();
+    //song.stop();
   }
     
   if(keyCode == 32){
     gameState = "play";
-    song.play();
+    //song.play();
   }
     
   }
